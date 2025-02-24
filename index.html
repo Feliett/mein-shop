@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online-Shop mit PayPal & Stripe</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Mein Online-Shop</h1>
+    </header>
+
+    <main>
+        <h2>Wähle eine Zahlungsmethode:</h2>
+
+        <!-- PayPal Button -->
+        <div id="paypal-button-container"></div>
+
+        <!-- Stripe Button -->
+        <button id="stripe-button">Mit Karte oder Klarna bezahlen</button>
+    </main>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=DEINE_PAYPAL_CLIENT_ID&currency=EUR"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="paypal.js"></script>
+    <script src="stripe.js"></script>
+
+</body>
+</html>
