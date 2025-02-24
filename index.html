@@ -3,29 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online-Shop mit PayPal & Stripe</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Mein Online-Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .produkt-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .produkt {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 250px;
+        }
+        .produkt img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .produkt h2 {
+            font-size: 1.2em;
+        }
+        .produkt p {
+            font-size: 1em;
+            color: #666;
+        }
+        .kaufen-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+        }
+        .kaufen-btn:hover {
+            background: #218838;
+        }
+    </style>
 </head>
 <body>
+    <h1>Mein Online-Shop</h1>
+    <div class="produkt-container" id="produkt-container"></div>
 
-    <header>
-        <h1>Mein Online-Shop</h1>
-    </header>
-
-    <main>
-        <h2>Wähle eine Zahlungsmethode:</h2>
-
-        <!-- PayPal Button -->
-        <div id="paypal-button-container"></div>
-
-        <!-- Stripe Button -->
-        <button id="stripe-button">Mit Karte oder Klarna bezahlen</button>
-    </main>
-
-    <script src="https://www.paypal.com/sdk/js?client-id=DEINE_PAYPAL_CLIENT_ID&currency=EUR"></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="paypal.js"></script>
-    <script src="stripe.js"></script>
-
+    <script>
+        async function ladeProdukte() {
+            const response = await fetch('produkte.json');
+            const produkte = await response.json();
+            const container = document.getElementById('produkt-container');
+            
+            produkte.forEach(produkt => {
+                const produktElement = document.createElement('div');
+                produktElement.classList.add('produkt');
+                produktElement.innerHTML = `
+                    <img src="${produkt.bild}" alt="${produkt.name}">
+                    <h2>${produkt.name}</h2>
+                    <p>${produkt.preis} €</p>
+                    <button class="kaufen-btn">Kaufen</button>
+                `;
+                container.appendChild(produktElement);
+            });
+        }
+        
+        ladeProdukte();
+    </script>
 </body>
 </html>
