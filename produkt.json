@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Stylisches T-Shirt",
+        "preis": 19.99,
+        "bild": "https://via.placeholder.com/200"
+    },
+    {
+        "name": "Sneaker",
+        "preis": 49.99,
+        "bild": "https://via.placeholder.com/200"
+    },
+    {
+        "name": "Modische Uhr",
+        "preis": 89.99,
+        "bild": "https://via.placeholder.com/200"
+    }
+]
