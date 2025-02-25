@@ -1,17 +1,20 @@
 [
     {
-        "name": "Stylisches T-Shirt",
+        "name": "T-Shirt",
         "preis": 19.99,
-        "bild": "https://via.placeholder.com/200"
+        "bild": "img/tshirt.jpg",
+        "kategorie": "bekleidung"
     },
     {
-        "name": "Sneaker",
+        "name": "Armbanduhr",
+        "preis": 129.99,
+        "bild": "img/watch.jpg",
+        "kategorie": "uhren"
+    },
+    {
+        "name": "Sonnenbrille",
         "preis": 49.99,
-        "bild": "https://via.placeholder.com/200"
-    },
-    {
-        "name": "Modische Uhr",
-        "preis": 89.99,
-        "bild": "https://via.placeholder.com/200"
+        "bild": "img/sunglasses.jpg",
+        "kategorie": "accessoires"
     }
 ]
