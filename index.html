@@ -4,78 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mein Online-Shop</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-        }
-        h1 {
-            color: #333;
-        }
-        .produkt-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-        .produkt {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 250px;
-        }
-        .produkt img {
-            width: 100%;
-            border-radius: 5px;
-        }
-        .produkt h2 {
-            font-size: 1.2em;
-        }
-        .produkt p {
-            font-size: 1em;
-            color: #666;
-        }
-        .kaufen-btn {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            width: 100%;
-            border-radius: 5px;
-        }
-        .kaufen-btn:hover {
-            background: #218838;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Mein Online-Shop</h1>
-    <div class="produkt-container" id="produkt-container"></div>
-
+    <header>
+        <h1>Mein Online-Shop</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="filterProducts('Alle')">Alle</a></li>
+                <li><a href="#" onclick="filterProducts('Bekleidung')">Bekleidung</a></li>
+                <li><a href="#" onclick="filterProducts('Uhren')">Uhren</a></li>
+                <li><a href="#" onclick="filterProducts('Accessoires')">Accessoires</a></li>
+            </ul>
+            <input type="text" id="search" placeholder="Suche..." onkeyup="searchProducts()">
+        </nav>
+    </header>
+    
+    <main>
+        <div id="produkt-liste"></div>
+    </main>
+    
     <script>
-        async function ladeProdukte() {
-            const response = await fetch('produkte.json');
-            const produkte = await response.json();
-            const container = document.getElementById('produkt-container');
+        let produkte = [];
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('produkt.json')
+                .then(response => response.json())
+                .then(data => {
+                    produkte = data;
+                    displayProducts(produkte);
+                })
+                .catch(error => console.error("Fehler beim Laden der Produkte:", error));
+        });
+        
+        function displayProducts(productArray) {
+            const produktListe = document.getElementById("produkt-liste");
+            produktListe.innerHTML = "";
             
-            produkte.forEach(produkt => {
-                const produktElement = document.createElement('div');
-                produktElement.classList.add('produkt');
-                produktElement.innerHTML = `
-                    <img src="${produkt.bild}" alt="${produkt.name}">
-                    <h2>${produkt.name}</h2>
-                    <p>${produkt.preis} €</p>
-                    <button class="kaufen-btn">Kaufen</button>
-                `;
-                container.appendChild(produktElement);
+            productArray.forEach(produkt => {
+                const produktDiv = document.createElement("div");
+                produktDiv.classList.add("produkt");
+                produktDiv.innerHTML = `<h2>${produkt.name}</h2><p>${produkt.kategorie}</p><p>${produkt.preis} €</p>`;
+                produktListe.appendChild(produktDiv);
             });
         }
         
-        ladeProdukte();
+        function filterProducts(kategorie) {
+            if (kategorie === "Alle") {
+                displayProducts(produkte);
+            } else {
+                const gefiltert = produkte.filter(p => p.kategorie === kategorie);
+                displayProducts(gefiltert);
+            }
+        }
+        
+        function searchProducts() {
+            const suchbegriff = document.getElementById("search").value.toLowerCase();
+            const gefiltert = produkte.filter(p => p.name.toLowerCase().includes(suchbegriff));
+            displayProducts(gefiltert);
+        }
     </script>
 </body>
 </html>
