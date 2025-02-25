@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Produkte</title>
+    <title>Mein Online-Shop</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="produkte.js"></script>
 </head>
 <body>
-
     <header>
-        <h1>Meine Produkte</h1>
+        <h1>Mein Online-Shop</h1>
         <nav>
             <ul>
-                <li><a href="#" onclick="zeigeProdukte('bekleidung')">Bekleidung</a></li>
-                <li><a href="#" onclick="zeigeProdukte('uhren')">Uhren</a></li>
-                <li><a href="#" onclick="zeigeProdukte('accessoires')">Accessoires</a></li>
+                <li><a href="#" onclick="filterProducts('alle')">Alle</a></li>
+                <li><a href="#" onclick="filterProducts('bekleidung')">Bekleidung</a></li>
+                <li><a href="#" onclick="filterProducts('uhren')">Uhren</a></li>
+                <li><a href="#" onclick="filterProducts('accessoires')">Accessoires</a></li>
             </ul>
-            <input type="text" id="suche" placeholder="Suche nach Produkten..." onkeyup="sucheProdukte()">
         </nav>
     </header>
-
     <main>
-        <div id="produkt-liste"></div>
+        <div id="produkt-container" class="grid-container"></div>
     </main>
-
+    <script src="produkte.js"></script>
 </body>
 </html>
