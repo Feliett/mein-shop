@@ -3,24 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Produkte</title>
+    <title>Mein Online-Shop</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
-        <h1>Meine Produkte</h1>
+        <h1>Mein Online-Shop</h1>
         <nav>
             <ul>
-                <li><a href="#" onclick="filterProducts('alle')">Alle</a></li>
-                <li><a href="#" onclick="filterProducts('bekleidung')">Bekleidung</a></li>
-                <li><a href="#" onclick="filterProducts('uhren')">Uhren</a></li>
-                <li><a href="#" onclick="filterProducts('accessoires')">Accessoires</a></li>
+                <li><a href="#" onclick="filterProdukte('Alle')">Alle</a></li>
+                <li><a href="#" onclick="filterProdukte('Bekleidung')">Bekleidung</a></li>
+                <li><a href="#" onclick="filterProdukte('Uhren')">Uhren</a></li>
+                <li><a href="#" onclick="filterProdukte('Accessoires')">Accessoires</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
-        <div id="produkt-container" class="grid-container"></div>
+        <div id="produkt-container"></div>
     </main>
-    <script src="produkt.json"></script>
+
+    <script src="produkte.js"></script>
+
 </body>
 </html>
