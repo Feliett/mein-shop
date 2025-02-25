@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Weißes Hemd",
+        "preis": 24.99,
+        "kategorie": "Bekleidung",
+        "bild": "images/hemd-weiss.jpg"
+    },
+    {
+        "name": "Schwarzes T-Shirt",
+        "preis": 14.99,
+        "kategorie": "Bekleidung",
+        "bild": "images/tshirt-schwarz.jpg"
+    },
+    {
+        "name": "Armbanduhr Silber",
+        "preis": 99.99,
+        "kategorie": "Uhren",
+        "bild": "images/uhr-silber.jpg"
+    },
+    {
+        "name": "Sonnenbrille",
+        "preis": 19.99,
+        "kategorie": "Accessoires",
+        "bild": "images/sonnenbrille.jpg"
+    }
+]
