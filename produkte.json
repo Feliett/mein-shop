@@ -28,23 +28,6 @@
         "preis": 19.99,
         "kategorie": "Accessoires",
         "bild": "images/sonnenbrille-schwarz.jpg"
-    },
-    {
-        "name": "Sonnenbrille Blau",
-        "preis": 19.99,
-        "kategorie": "Accessoires",
-        "bild": "images/sonnenbrille-blau.jpg"
-    },
-     {
-        "name": "Sonnenbrille Grün",
-        "preis": 19.99,
-        "kategorie": "Accessoires",
-        "bild": "images/sonnenbrille-grün.jpg"
-    },
-     {
-        "name": "Sonnenbrille Rot",
-        "preis": 19.99,
-        "kategorie": "Accessoires",
-        "bild": "images/sonnenbrille-rot.jpg"
+   
     }
 ]
