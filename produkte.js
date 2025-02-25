@@ -1,53 +1,40 @@
 document.addEventListener("DOMContentLoaded", function () {
-    ladeProdukte();
+    fetchProdukte();
 });
 
-function ladeProdukte(kategorie = "alle") {
-    fetch("produkt.json")
-        .then(response => response.json())
-        .then(data => {
-            const produktListe = document.getElementById("produkt-liste");
-            produktListe.innerHTML = ""; // Vorherige Produkte löschen
-
-            data.produkte.forEach(produkt => {
-                if (kategorie === "alle" || produkt.kategorie === kategorie) {
-                    const produktElement = document.createElement("div");
-                    produktElement.classList.add("produkt");
-                    produktElement.innerHTML = `
-                        <img src="${produkt.bild}" alt="${produkt.name}">
-                        <h3>${produkt.name}</h3>
-                        <p>${produkt.preis.toFixed(2)} €</p>
-                        <button onclick="alert('Produkt ${produkt.name} in den Warenkorb gelegt!')">Kaufen</button>
-                    `;
-                    produktListe.appendChild(produktElement);
-                }
-            });
-        })
-        .catch(error => console.error("Fehler beim Laden der Produkte:", error));
+async function fetchProdukte() {
+    try {
+        const response = await fetch("produkte.json");
+        const produkte = await response.json();
+        renderProdukte(produkte, "Alle");
+    } catch (error) {
+        console.error("Fehler beim Laden der Produkte:", error);
+    }
 }
 
-// Funktion für die Suche
-function sucheProdukte() {
-    const suchbegriff = document.getElementById("suche").value.toLowerCase();
-    fetch("produkt.json")
-        .then(response => response.json())
-        .then(data => {
-            const produktListe = document.getElementById("produkt-liste");
-            produktListe.innerHTML = ""; // Vorherige Produkte löschen
+function renderProdukte(produkte, kategorie) {
+    const container = document.getElementById("produkt-container");
+    container.innerHTML = "";
 
-            data.produkte.forEach(produkt => {
-                if (produkt.name.toLowerCase().includes(suchbegriff)) {
-                    const produktElement = document.createElement("div");
-                    produktElement.classList.add("produkt");
-                    produktElement.innerHTML = `
-                        <img src="${produkt.bild}" alt="${produkt.name}">
-                        <h3>${produkt.name}</h3>
-                        <p>${produkt.preis.toFixed(2)} €</p>
-                        <button onclick="alert('Produkt ${produkt.name} in den Warenkorb gelegt!')">Kaufen</button>
-                    `;
-                    produktListe.appendChild(produktElement);
-                }
-            });
-        })
-        .catch(error => console.error("Fehler beim Laden der Produkte:", error));
+    const gefilterteProdukte = kategorie === "Alle" ? produkte : produkte.filter(p => p.kategorie === kategorie);
+
+    gefilterteProdukte.forEach(produkt => {
+        const produktElement = document.createElement("div");
+        produktElement.classList.add("produkt");
+
+        produktElement.innerHTML = `
+            <img src="${produkt.bild}" alt="${produkt.name}">
+            <h3>${produkt.name}</h3>
+            <p>${produkt.preis} €</p>
+        `;
+
+        container.appendChild(produktElement);
+    });
+}
+
+function filterProdukte(kategorie) {
+    fetch("produkte.json")
+        .then(response => response.json())
+        .then(produkte => renderProdukte(produkte, kategorie))
+        .catch(error => console.error("Fehler beim Filtern der Produkte:", error));
 }
