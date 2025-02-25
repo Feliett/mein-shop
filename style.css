@@ -47,3 +47,12 @@ nav ul li a {
     max-width: 100%;
     height: auto;
 }
+
+.product img {
+    width: 200px; /* Einheitliche Breite */
+    height: 250px; /* Einheitliche Höhe */
+    object-fit: cover; /* Schneidet das Bild so zu, dass es den Container füllt */
+    display: block;
+    margin: 0 auto; /* Zentriert das Bild */
+}
+
