@@ -1,5 +1,3 @@
-### index.html
-```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -10,40 +8,22 @@
     <script defer src="produkte.js"></script>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="bekleidung.html">Bekleidung</a></li>
-            <li><a href="uhren.html">Uhren</a></li>
-            <li><a href="accessoires.html">Accessoires</a></li>
-            <li><input type="text" id="search" placeholder="Suche..."></li>
-        </ul>
-    </nav>
-    <div id="produkte"></div>
+
+    <header>
+        <h1>Mein Online-Shop</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="zeigeProdukte('bekleidung')">Bekleidung</a></li>
+                <li><a href="#" onclick="zeigeProdukte('uhren')">Uhren</a></li>
+                <li><a href="#" onclick="zeigeProdukte('accessoires')">Accessoires</a></li>
+            </ul>
+            <input type="text" id="suche" placeholder="Suche nach Produkten..." onkeyup="sucheProdukte()">
+        </nav>
+    </header>
+
+    <main>
+        <div id="produkt-liste"></div>
+    </main>
+
 </body>
 </html>
-```
-
-### produkte.js
-```javascript
-document.addEventListener("DOMContentLoaded", function() {
-    fetch("produkt.json")
-    .then(response => response.json())
-    .then(data => {
-        const produkteContainer = document.getElementById("produkte");
-        data.forEach(produkt => {
-            const produktElement = document.createElement("div");
-            produktElement.classList.add("produkt");
-            produktElement.innerHTML = `
-                <img src="${produkt.bild}" alt="${produkt.name}">
-                <h3>${produkt.name}</h3>
-                <p>${produkt.preis} €</p>
-                <button>Kaufen</button>
-            `;
-            produkteContainer.appendChild(produktElement);
-        });
-    });
-});
-```
-
-### bekleidung.html, uhren.html, accessoires.html
-Diese Dateien haben eine ähnliche Struktur wie `index.html`, aber filtern die Produkte entsprechend der Kategorie.
