@@ -1,3 +1,5 @@
+### index.html
+```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -5,64 +7,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mein Online-Shop</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="produkte.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Mein Online-Shop</h1>
-        <nav>
-            <ul>
-                <li><a href="#" onclick="filterProducts('Alle')">Alle</a></li>
-                <li><a href="#" onclick="filterProducts('Bekleidung')">Bekleidung</a></li>
-                <li><a href="#" onclick="filterProducts('Uhren')">Uhren</a></li>
-                <li><a href="#" onclick="filterProducts('Accessoires')">Accessoires</a></li>
-            </ul>
-            <input type="text" id="search" placeholder="Suche..." onkeyup="searchProducts()">
-        </nav>
-    </header>
-    
-    <main>
-        <div id="produkt-liste"></div>
-    </main>
-    
-    <script>
-        let produkte = [];
-        
-        document.addEventListener("DOMContentLoaded", () => {
-            fetch('produkt.json')
-                .then(response => response.json())
-                .then(data => {
-                    produkte = data;
-                    displayProducts(produkte);
-                })
-                .catch(error => console.error("Fehler beim Laden der Produkte:", error));
-        });
-        
-        function displayProducts(productArray) {
-            const produktListe = document.getElementById("produkt-liste");
-            produktListe.innerHTML = "";
-            
-            productArray.forEach(produkt => {
-                const produktDiv = document.createElement("div");
-                produktDiv.classList.add("produkt");
-                produktDiv.innerHTML = `<h2>${produkt.name}</h2><p>${produkt.kategorie}</p><p>${produkt.preis} €</p>`;
-                produktListe.appendChild(produktDiv);
-            });
-        }
-        
-        function filterProducts(kategorie) {
-            if (kategorie === "Alle") {
-                displayProducts(produkte);
-            } else {
-                const gefiltert = produkte.filter(p => p.kategorie === kategorie);
-                displayProducts(gefiltert);
-            }
-        }
-        
-        function searchProducts() {
-            const suchbegriff = document.getElementById("search").value.toLowerCase();
-            const gefiltert = produkte.filter(p => p.name.toLowerCase().includes(suchbegriff));
-            displayProducts(gefiltert);
-        }
-    </script>
+    <nav>
+        <ul>
+            <li><a href="bekleidung.html">Bekleidung</a></li>
+            <li><a href="uhren.html">Uhren</a></li>
+            <li><a href="accessoires.html">Accessoires</a></li>
+            <li><input type="text" id="search" placeholder="Suche..."></li>
+        </ul>
+    </nav>
+    <div id="produkte"></div>
 </body>
 </html>
+```
+
+### produkte.js
+```javascript
+document.addEventListener("DOMContentLoaded", function() {
+    fetch("produkt.json")
+    .then(response => response.json())
+    .then(data => {
+        const produkteContainer = document.getElementById("produkte");
+        data.forEach(produkt => {
+            const produktElement = document.createElement("div");
+            produktElement.classList.add("produkt");
+            produktElement.innerHTML = `
+                <img src="${produkt.bild}" alt="${produkt.name}">
+                <h3>${produkt.name}</h3>
+                <p>${produkt.preis} €</p>
+                <button>Kaufen</button>
+            `;
+            produkteContainer.appendChild(produktElement);
+        });
+    });
+});
+```
+
+### bekleidung.html, uhren.html, accessoires.html
+Diese Dateien haben eine ähnliche Struktur wie `index.html`, aber filtern die Produkte entsprechend der Kategorie.
