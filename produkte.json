@@ -17,10 +17,10 @@
         "kategorie": "Uhren",
         "bild": "images/uhr-silber.jpg"
     },
-     {
-        "name": "Armbanduhr Gold",
-        "preis": 99.99,
-        "kategorie": "Uhren",
-        "bild": "images/uhr-gold.jpg"
+    {
+        "name": "Sonnenbrille",
+        "preis": 19.99,
+        "kategorie": "Accessoires",
+        "bild": "images/sonnenbrille.jpg"
     }
 ]
