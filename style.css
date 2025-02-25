@@ -43,11 +43,6 @@ nav ul li a {
     text-align: center;
 }
 
-.produkt img {
-    max-width: 100%;
-    height: auto;
-}
-
 .product img {
     width: 200px; /* Einheitliche Breite */
     height: 250px; /* Einheitliche Höhe */
