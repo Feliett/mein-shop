@@ -43,10 +43,7 @@ nav ul li a {
     text-align: center;
 }
 
-.product img {
-    width: 150px; /* Einheitliche Breite */
-    height: 200px; /* Einheitliche Höhe */
-    object-fit: cover; /* Schneidet das Bild so zu, dass es den Container füllt */
-    display: block;
-    margin: 0 auto; /* Zentriert das Bild */
+.produkt img {
+    max-width: 100%;
+    height: auto;
 }
