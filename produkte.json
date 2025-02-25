@@ -22,17 +22,5 @@
         "preis": 99.99,
         "kategorie": "Uhren",
         "bild": "images/uhr-gold.jpg"
-    },
-    {
-        "name": "Sonnenbrille Schwarz",
-        "preis": 19.99,
-        "kategorie": "Accessoires",
-        "bild": "images/sonnenbrille-schwarz.jpg" 
-    },
-     {
-        "name": "Sonnenbrille Blau",
-        "preis": 19.99,
-        "kategorie": "Accessoires",
-        "bild": "images/sonnenbrille-blau.jpg"
-    }  
+    }
 ]
