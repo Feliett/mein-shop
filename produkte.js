@@ -1,72 +1,38 @@
-const produkte = [
-    {
-        name: "Coolmax Hemd Regular Fit",
-        preis: "24,99 €",
-        kategorie: "Bekleidung",
-        image: "images/hemd_weiss.png"
-    },
-    {
-        name: "Coolmax T-Shirt Slim Fit",
-        preis: "14,99 €",
-        kategorie: "Bekleidung",
-        image: "images/tshirt_schwarz.png"
-    },
-    {
-        name: "5er-Pack Coolmax Socken",
-        preis: "14,99 €",
-        kategorie: "Accessoires",
-        image: "images/socken_schwarz.png"
-    },
-    {
-        name: "Coolmax Hemd Regular Fit Schwarz",
-        preis: "24,99 €",
-        kategorie: "Bekleidung",
-        image: "images/hemd_schwarz.png"
-    },
-    {
-        name: "Elegante Armbanduhr",
-        preis: "99,99 €",
-        kategorie: "Uhren",
-        image: "images/uhr_elegant.png"
-    },
-    {
-        name: "Sportliche Armbanduhr",
-        preis: "89,99 €",
-        kategorie: "Uhren",
-        image: "images/uhr_sport.png"
-    },
-    {
-        name: "Ledergürtel Braun",
-        preis: "19,99 €",
-        kategorie: "Accessoires",
-        image: "images/guertel_braun.png"
-    },
-    {
-        name: "Lederhandschuhe Schwarz",
-        preis: "29,99 €",
-        kategorie: "Accessoires",
-        image: "images/handschuhe_schwarz.png"
-    }
-];
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("produkte.json")
+        .then(response => response.json())
+        .then(produkte => anzeigenProdukte(produkte))
+        .catch(error => console.error("Fehler beim Laden der Produkte:", error));
+});
 
-function filterProdukte(kategorie) {
-    const container = document.getElementById("produkt-container");
-    container.innerHTML = ""; // Container leeren
-    
-    const gefilterteProdukte = kategorie === "Alle" ? produkte : produkte.filter(p => p.kategorie === kategorie);
-    
+function anzeigenProdukte(produkte, kategorie = "Alle") {
+    const produktContainer = document.getElementById("produkt-liste");
+    produktContainer.innerHTML = ""; // Vorherige Produkte löschen
+
+    const gefilterteProdukte = kategorie === "Alle" 
+        ? produkte 
+        : produkte.filter(produkt => produkt.category === kategorie);
+
     gefilterteProdukte.forEach(produkt => {
         const produktElement = document.createElement("div");
         produktElement.classList.add("produkt");
+
         produktElement.innerHTML = `
             <img src="${produkt.image}" alt="${produkt.name}">
             <h3>${produkt.name}</h3>
-            <p>${produkt.preis}</p>
+            <p>${produkt.price.toFixed(2)} € ${produkt.oldPrice ? `<span class="old-price">${produkt.oldPrice.toFixed(2)} €</span>` : ""}</p>
         `;
-        container.appendChild(produktElement);
+
+        produktContainer.appendChild(produktElement);
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    filterProdukte("Alle"); // Standardmäßig alle Produkte anzeigen
+// Event-Listener für Kategorien
+document.querySelectorAll(".kategorie-button").forEach(button => {
+    button.addEventListener("click", function () {
+        const kategorie = this.dataset.kategorie;
+        fetch("produkte.json")
+            .then(response => response.json())
+            .then(produkte => anzeigenProdukte(produkte, kategorie));
+    });
 });
