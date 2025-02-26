@@ -5,14 +5,14 @@
     "price": 24.99,
     "oldPrice": 30.99,
     "category": "Bekleidung",
-    "image": "images/hemd_weiss.jpg"
+    "image": "images/hemd-weiss.jpg"
   },
   {
     "id": 2,
     "name": "Coolmax® T-Shirt Slim Fit",
     "price": 14.99,
     "category": "Bekleidung",
-    "image": "images/tshirt_schwarz.jpg"
+    "image": "images/tshirt-schwarz.jpg"
   },
   {
     "id": 3,
