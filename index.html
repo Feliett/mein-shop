@@ -8,7 +8,8 @@
 </head>
 <body>
   <header>
-    <div class="logo">Mein Online-Shop</div>
+    <!-- Logo als Link zur Startseite -->
+    <a href="index.html" class="logo">Mein Online-Shop</a>
     <nav>
       <ul>
         <li><a href="#" onclick="filterProdukte('Alle')">Alle</a></li>
@@ -20,11 +21,19 @@
   </header>
 
   <main>
-    <!-- Hier werden alle Produkte aus der produkte.json angezeigt -->
+    <!-- Container für die dynamisch geladenen Produkte -->
     <div id="produkt-liste" class="grid-container"></div>
   </main>
 
-  <!-- Stelle sicher, dass du einen lokalen Server verwendest (z.B. Live Server in VS Code oder python -m http.server) -->
+  <!-- Modal-Fenster für Produktdetails -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="modal-product-details"></div>
+      <button id="add-to-cart">In den Warenkorb</button>
+    </div>
+  </div>
+
   <script src="produkte.js"></script>
 </body>
 </html>
