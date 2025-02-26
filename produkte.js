@@ -73,7 +73,7 @@ function openModal(produkt) {
   modalDetails.innerHTML = `
     <img src="${produkt.image}" alt="${produkt.name}" style="width:100%; height:auto; object-fit:cover; border-radius:8px;">
     <h3>${produkt.name}</h3>
-    <p>${produkt.description || "Keine detaillierte Beschreibung verfügbar."}</p>
+    <p>${produkt.description || "Schwarzes T-Shirt"}</p>
     <p class="price">${produkt.price.toFixed(2)} € ${produkt.oldPrice ? `<span class="old-price">${produkt.oldPrice.toFixed(2)} €</span>` : ""}</p>
   `;
 
