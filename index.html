@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mein Online-Shop</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Online-Shop</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <div class="logo">Mein Online-Shop</div>
+    <nav>
+      <ul>
+        <li><a href="#" onclick="filterProdukte('Alle')">Alle</a></li>
+        <li><a href="#" onclick="filterProdukte('Bekleidung')">Bekleidung</a></li>
+        <li><a href="#" onclick="filterProdukte('Uhren')">Uhren</a></li>
+        <li><a href="#" onclick="filterProdukte('Accessoires')">Accessoires</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <header>
-        <h1>Mein Online-Shop</h1>
-        <nav>
-            <ul>
-                <li><a href="#" onclick="filterProdukte('Alle')">Alle</a></li>
-                <li><a href="#" onclick="filterProdukte('Bekleidung')">Bekleidung</a></li>
-                <li><a href="#" onclick="filterProdukte('Uhren')">Uhren</a></li>
-                <li><a href="#" onclick="filterProdukte('Accessoires')">Accessoires</a></li>
-            </ul>
-        </nav>
-    </header>
+  <main>
+    <!-- Hier werden alle Produkte aus der produkte.json angezeigt -->
+    <div id="produkt-liste" class="grid-container"></div>
+  </main>
 
-    <main>
-        <div id="produkt-container"></div>
-    </main>
-
-    <script src="produkte.js"></script>
-
+  <!-- Stelle sicher, dass du einen lokalen Server verwendest (z.B. Live Server in VS Code oder python -m http.server) -->
+  <script src="produkte.js"></script>
 </body>
 </html>
