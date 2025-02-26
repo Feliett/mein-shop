@@ -1,26 +1,60 @@
 [
-    {
-        "name": "Weißes Hemd",
-        "preis": 24.99,
-        "kategorie": "Bekleidung",
-        "bild": "images/hemd-weiss.jpg"
-    },
-    {
-        "name": "Schwarzes T-Shirt",
-        "preis": 14.99,
-        "kategorie": "Bekleidung",
-        "bild": "images/tshirt-schwarz.jpg"
-    },
-    {
-        "name": "Armbanduhr Silber",
-        "preis": 99.99,
-        "kategorie": "Uhren",
-        "bild": "images/uhr-silber.jpg"
-    },
-    {
-        "name": "Sonnenbrille",
-        "preis": 19.99,
-        "kategorie": "Accessoires",
-        "bild": "images/sonnenbrille.jpg"
-    }
+  {
+    "id": 1,
+    "name": "Coolmax®-Hemd Regular Fit",
+    "price": 24.99,
+    "oldPrice": 30.99,
+    "category": "Bekleidung",
+    "image": "images/hemd_weiss.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Coolmax® T-Shirt Slim Fit",
+    "price": 14.99,
+    "category": "Bekleidung",
+    "image": "images/tshirt_schwarz.jpg"
+  },
+  {
+    "id": 3,
+    "name": "5er-Pack Coolmax®-Socken",
+    "price": 14.99,
+    "category": "Accessoires",
+    "image": "images/socken_schwarz.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Coolmax®-Hemd Regular Fit Schwarz",
+    "price": 24.99,
+    "oldPrice": 30.99,
+    "category": "Bekleidung",
+    "image": "images/hemd_schwarz.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Stylische Sonnenbrille",
+    "price": 19.99,
+    "category": "Accessoires",
+    "image": "images/sonnenbrille.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Leder-Armbanduhr Braun",
+    "price": 49.99,
+    "category": "Uhren",
+    "image": "images/uhr_braun.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Leder-Armbanduhr Schwarz",
+    "price": 49.99,
+    "category": "Uhren",
+    "image": "images/uhr_schwarz.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Sportliche Sneakers Weiß",
+    "price": 59.99,
+    "category": "Schuhe",
+    "image": "images/sneakers_weiss.jpg"
+  }
 ]
